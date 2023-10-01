@@ -1,6 +1,10 @@
 #Hardware drivers
 BSP
 
+#Exclude inits
+!BSP/Inc/stm_init.h
+!BSP/Src/init_stm32l4.c
+
 #Build
 build
 
