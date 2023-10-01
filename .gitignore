@@ -1,8 +1,12 @@
 #Hardware drivers
-BSP
+BSP/Inc/*
+BSP/Src/*
+BSP/Drivers
+BSP/startup_stm32l432xx.s
+BSP/STM32L432KCUx_FLASH.ld
 
 #Exclude inits
-!BSP/Inc/stm_init.h
+!/BSP/Inc/stm_init.h
 !BSP/Src/init_stm32l4.c
 
 #Build
@@ -10,3 +14,4 @@ build
 
 #vscode
 .vscode
+.gitignore
