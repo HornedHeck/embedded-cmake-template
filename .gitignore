@@ -4,6 +4,7 @@ BSP/Src/*
 BSP/Drivers
 BSP/startup_stm32l432xx.s
 BSP/STM32L432KCUx_FLASH.ld
+STM32L4x2.svd
 
 #Exclude inits
 !/BSP/Inc/stm_init.h
