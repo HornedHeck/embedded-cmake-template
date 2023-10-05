@@ -1,10 +1,8 @@
-#Hardware drivers
-BSP/Inc/*
-BSP/Src/*
-BSP/Drivers
-BSP/startup_stm32l432xx.s
-BSP/STM32L432KCUx_FLASH.ld
-STM32L4x2.svd
+##Hardware
+# boards
+BSP/board/*
+!BSP/board/inc
+
 
 #Exclude inits
 !/BSP/Inc/stm_init.h

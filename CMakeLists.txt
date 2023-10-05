@@ -9,7 +9,7 @@ message("Build type: " ${CMAKE_BUILD_TYPE})
 
 
 project(
-    "cmake-custom"
+    "o-kawai-koto"
     LANGUAGES C ASM
     VERSION 0.1.0
 )
@@ -25,54 +25,62 @@ set(APP_INC
 )
 
 file(GLOB CORE_SRC
-    ${CMAKE_SOURCE_DIR}/BSP/Src/*.c
+    ${CMAKE_SOURCE_DIR}/BSP/board/stm32l432kc/Src/*.c
 )
 
 set(CORE_INC
-    ${CMAKE_SOURCE_DIR}/BSP/Inc
+    ${CMAKE_SOURCE_DIR}/BSP/board/inc
+    ${CMAKE_SOURCE_DIR}/BSP/board/stm32l432kc/Inc
 )
 
 set(CMSIS_INC
-    ${CMAKE_SOURCE_DIR}/BSP/Drivers/CMSIS/Include
-    ${CMAKE_SOURCE_DIR}/BSP/Drivers/CMSIS/Core/Include
+    ${CMAKE_SOURCE_DIR}/BSP/board/stm32l432kc/CMSIS/Include
+    ${CMAKE_SOURCE_DIR}/BSP/board/stm32l432kc/CMSIS/Core/Include
 )
 
-# file(GLOB HAL_SRC
-#     ${CMAKE_SOURCE_DIR}/BSP/Drivers/STM32L4xx_HAL_Driver/Src/*.c
-# )
 
 set(HAL_SRC
-    "${CMAKE_SOURCE_DIR}/BSP/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal.c"
-    "${CMAKE_SOURCE_DIR}/BSP/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_cortex.c"
-    "${CMAKE_SOURCE_DIR}/BSP/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_dma.c"
-    "${CMAKE_SOURCE_DIR}/BSP/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_dma_ex.c"
-    "${CMAKE_SOURCE_DIR}/BSP/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_exti.c"
-    "${CMAKE_SOURCE_DIR}/BSP/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash.c"
-    "${CMAKE_SOURCE_DIR}/BSP/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash_ex.c"
-    "${CMAKE_SOURCE_DIR}/BSP/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash_ramfunc.c"
-    "${CMAKE_SOURCE_DIR}/BSP/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_gpio.c"
-    "${CMAKE_SOURCE_DIR}/BSP/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_pwr.c"
-    "${CMAKE_SOURCE_DIR}/BSP/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_pwr_ex.c"
-    "${CMAKE_SOURCE_DIR}/BSP/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rcc.c"
-    "${CMAKE_SOURCE_DIR}/BSP/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rcc_ex.c"
-    "${CMAKE_SOURCE_DIR}/BSP/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_tim.c"
-    "${CMAKE_SOURCE_DIR}/BSP/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_tim_ex.c"
-    "${CMAKE_SOURCE_DIR}/BSP//Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_uart.c"
-    "${CMAKE_SOURCE_DIR}/BSP//Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_uart_ex.c"
+    "${CMAKE_SOURCE_DIR}/BSP/board/stm32l432kc/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal.c"
+    "${CMAKE_SOURCE_DIR}/BSP/board/stm32l432kc/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_cortex.c"
+    "${CMAKE_SOURCE_DIR}/BSP/board/stm32l432kc/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_dma.c"
+    "${CMAKE_SOURCE_DIR}/BSP/board/stm32l432kc/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_dma_ex.c"
+    "${CMAKE_SOURCE_DIR}/BSP/board/stm32l432kc/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_exti.c"
+    "${CMAKE_SOURCE_DIR}/BSP/board/stm32l432kc/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash.c"
+    "${CMAKE_SOURCE_DIR}/BSP/board/stm32l432kc/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash_ex.c"
+    "${CMAKE_SOURCE_DIR}/BSP/board/stm32l432kc/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash_ramfunc.c"
+    "${CMAKE_SOURCE_DIR}/BSP/board/stm32l432kc/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_gpio.c"
+    "${CMAKE_SOURCE_DIR}/BSP/board/stm32l432kc/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_pwr.c"
+    "${CMAKE_SOURCE_DIR}/BSP/board/stm32l432kc/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_pwr_ex.c"
+    "${CMAKE_SOURCE_DIR}/BSP/board/stm32l432kc/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rcc.c"
+    "${CMAKE_SOURCE_DIR}/BSP/board/stm32l432kc/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rcc_ex.c"
+    "${CMAKE_SOURCE_DIR}/BSP/board/stm32l432kc/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_tim.c"
+    "${CMAKE_SOURCE_DIR}/BSP/board/stm32l432kc/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_tim_ex.c"
+    "${CMAKE_SOURCE_DIR}/BSP//board/stm32l432kc/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_uart.c"
+    "${CMAKE_SOURCE_DIR}/BSP//board/stm32l432kc/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_uart_ex.c"
 )
 
 set(HAL_INC
-    ${CMAKE_SOURCE_DIR}/BSP/Drivers/STM32L4xx_HAL_Driver/Inc
-    ${CMAKE_SOURCE_DIR}/BSP/Drivers/CMSIS/Device/ST/STM32L4xx/Include
+    ${CMAKE_SOURCE_DIR}/BSP/board/stm32l432kc/STM32L4xx_HAL_Driver/Inc
+    ${CMAKE_SOURCE_DIR}/BSP/board/stm32l432kc/CMSIS/Device/ST/STM32L4xx/Include
 )
 
-set(STARTUP_SRC ${CMAKE_SOURCE_DIR}/BSP/startup_stm32l432xx.s)
-set(LINKER_SCRIPT ${CMAKE_SOURCE_DIR}/BSP/STM32L432KCUx_FLASH.ld)
+# Network
+set(NETWORK_INC
+    ${CMAKE_SOURCE_DIR}/BSP/network/inc/
+)
+
+file(GLOB NETWORK_SRC
+    ${CMAKE_SOURCE_DIR}/BSP/network/src/*.c
+)
+
+set(STARTUP_SRC ${CMAKE_SOURCE_DIR}/BSP/board/stm32l432kc/startup_stm32l432xx.s)
+set(LINKER_SCRIPT ${CMAKE_SOURCE_DIR}/BSP/board/stm32l432kc/STM32L432KCUx_FLASH.ld)
 
 add_executable(${TARGET_NAME}
     ${APP_SRC}
     ${CORE_SRC}
     ${HAL_SRC}
+    ${NETWORK_SRC}
     ${STARTUP_SRC}
     ${LINKER_SCRIPT}
 )
@@ -81,6 +89,7 @@ target_include_directories(${TARGET_NAME} PRIVATE
     ${APP_INC}
     ${CORE_INC}
     ${CMSIS_INC}
+    ${NETWORK_INC}
     ${HAL_INC}
 )
 

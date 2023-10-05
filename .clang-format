@@ -1,0 +1,14 @@
+BasedOnStyle: Google
+
+UseTab: Never
+IndentWidth: 4
+ColumnLimit: 80
+
+# (int) x
+SpaceAfterCStyleCast: true
+
+# align macroses
+AlignConsecutiveMacros: Consecutive
+
+# use \n instead of \r\n
+UseCRLF: false
