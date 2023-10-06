@@ -1,12 +1,11 @@
 ##Hardware
-# boards
-BSP/board/*
-!BSP/board/inc
+
+# Exclude generated files
+BSP/*/generated/*
+# leave .clang-tidy files to exclude from checks
+!BSP/*/generated/.clang-tidy
 
 
-#Exclude inits
-!/BSP/Inc/stm_init.h
-!BSP/Src/init_stm32l4.c
 
 #Build
 build

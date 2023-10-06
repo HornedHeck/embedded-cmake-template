@@ -1,0 +1,8 @@
+Checks: '-*,readability-*,google-*,performance-*'
+WarningsAsErrors: "*"
+
+
+
+# IMPORTANT: Set HeaderFilterRegex as shown below.
+# Do not set it to '.*', for example.
+HeaderFilterRegex: ''
