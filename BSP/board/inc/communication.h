@@ -6,11 +6,19 @@
 #define SPI  2
 
 // Typedef
-struct communication_handle {
+typedef struct InterfaceHandle {
     uint8_t type;
     uint8_t number;
-} communication_handle;
+} InterfaceHandle;
+
+typedef struct CommunicationHandle {
+    InterfaceHandle interface;
+    uint16_t request_size;
+    uint8_t *request_data;
+    uint16_t initial_size;
+    uint8_t *buffer;
+    uint16_t (*callback)(void);
+} CommunicationHandle;
 
 // Funtions
-
-void toggle_pin() {}
+void TogglePin() {}

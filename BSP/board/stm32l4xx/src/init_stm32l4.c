@@ -1,5 +1,7 @@
 #include "init_stm32l4.h"
 
+#define LED LD3_Pin
+
 /**
   * @brief System Clock Configuration
   * @retval None
