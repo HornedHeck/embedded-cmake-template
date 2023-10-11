@@ -2,8 +2,9 @@
 
 # Exclude generated files
 BSP/*/generated/*
-# leave .clang-tidy files to exclude from checks
+# leave .clang-tidy and cmake files
 !BSP/*/generated/.clang-tidy
+!BSP/*/generated/CMakeLists.txt
 
 
 

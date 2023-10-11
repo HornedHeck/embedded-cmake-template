@@ -1,4 +1,12 @@
-Checks: '-*,readability-*,google-*,performance-*'
+Checks: >
+  -*,
+  readability-*,
+  google-*,
+  performance-*,
+  bugprone-*,
+  modernize-*,
+  -modernize-use-using,
+  -modernize-deprecated-headers
 WarningsAsErrors: "*"
 
 
