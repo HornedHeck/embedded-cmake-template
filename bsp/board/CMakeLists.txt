@@ -1,25 +1,22 @@
-file(GLOB BOARD_SRC
-    ${CMAKE_CURRENT_LIST_DIR}/stm32l4xx/src/*.c
-)
+set(BOARD_FLAVOR
+    "stm32l4xx"
+    CACHE STRING "Board used")
+set_property(CACHE BOARD_FLAVOR PROPERTY STRINGS "stm32l4xx")
 
-set(BOARD_INC
-    ${CMAKE_CURRENT_LIST_DIR}/include
-)
+file(GLOB BOARD_SRC ${CMAKE_CURRENT_LIST_DIR}/${BOARD_FLAVOR}/src/*.c)
 
-set(BOARD_PRIVATE_INC
-    ${CMAKE_CURRENT_LIST_DIR}/stm32l4xx/include
-)
+set(BOARD_INC ${CMAKE_CURRENT_LIST_DIR}/include)
 
-add_library(BOARD STATIC
-    ${BOARD_SRC}
-)
+set(BOARD_PRIVATE_INC ${CMAKE_CURRENT_LIST_DIR}/${BOARD_FLAVOR}/include)
 
-target_include_directories(BOARD 
-    PUBLIC ${BOARD_INC}
-    PRIVATE ${BOARD_PRIVATE_INC}
-)
+add_library(BOARD STATIC ${BOARD_SRC})
 
-target_link_libraries(BOARD HAL_CMSIS)
+target_include_directories(
+  BOARD
+  PUBLIC ${BOARD_INC}
+  PRIVATE ${BOARD_PRIVATE_INC})
+
+add_subdirectory(${BOARD_FLAVOR})
 
 target_compile_options(BOARD PRIVATE ${COMPILE_OPTIONS})
 target_compile_definitions(BOARD PRIVATE ${COMPILE_DEFINITIONS})
