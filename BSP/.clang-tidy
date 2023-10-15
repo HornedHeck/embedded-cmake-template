@@ -1,3 +1,0 @@
-InheritParentConfig: true
-Checks: '-readability-magic-numbers,-performance-no-int-to-ptr'
-

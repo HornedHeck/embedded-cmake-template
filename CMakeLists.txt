@@ -13,9 +13,6 @@ project(
     VERSION 0.1.0
 )
 
-set(TARGET_NAME ${CMAKE_PROJECT_NAME})
-
-
 set(COMPILE_OPTIONS 
     -mcpu=cortex-m4
     -mthumb
@@ -24,7 +21,6 @@ set(COMPILE_OPTIONS
     -fdata-sections
     -ffunction-sections
     -Wall
-    -Wno-unused-command-line-argument
     $<$<CONFIG:Debug>:-Og>
 )
 
@@ -35,52 +31,46 @@ set(COMPILE_DEFINITIONS
 )
 
 set(LINK_OPTIONS
-    -T${CMAKE_SOURCE_DIR}/BSP/board/generated/STM32L432KCUx_FLASH.ld
+    -T${CMAKE_SOURCE_DIR}/drivers/STM32L432KCUx_FLASH.ld
     -mcpu=cortex-m4
-    # -mthumb
+    -mthumb
     -mfpu=fpv4-sp-d16
     -mfloat-abi=hard
     # -specs=nano.specs
     # -lc
     # -lm
     # -lnosys
-    # -Wl,-Map=${PROJECT_NAME}.map,--cref
+    -Wl,-Map=${PROJECT_NAME}.map,--cref
     # -Wl,--gc-sections
 )
 
+add_subdirectory(${CMAKE_SOURCE_DIR}/drivers)
+
+add_subdirectory(${CMAKE_SOURCE_DIR}/bsp)
+
+set(TARGET_NAME ${CMAKE_PROJECT_NAME})
+
 file(GLOB APP_SRC
-    ${CMAKE_SOURCE_DIR}/app/src/*.c
+    ${CMAKE_SOURCE_DIR}/app/*.c
 )
 
 set(APP_INC
-    ${CMAKE_SOURCE_DIR}/app/inc
+    ${CMAKE_SOURCE_DIR}/app
 )
-
-
-add_subdirectory(${CMAKE_SOURCE_DIR}/BSP)
 
 add_executable(${TARGET_NAME}
     ${APP_SRC}
-    ${BOARD_SRC}
 )
 
 target_include_directories(${TARGET_NAME} PRIVATE
     ${APP_INC}
-    ${BOARD_INC}
 )
-
-target_link_libraries(${TARGET_NAME} PRIVATE BOARD)
-target_link_libraries(${TARGET_NAME} PRIVATE NETWORK)
 
 target_compile_options(${TARGET_NAME} PRIVATE ${COMPILE_OPTIONS})
 target_compile_definitions(${TARGET_NAME} PRIVATE ${COMPILE_DEFINITIONS})
 target_link_options(${TARGET_NAME} PRIVATE ${LINK_OPTIONS})
 
-set_target_properties(
-    ${TARGET_NAME}
-    PROPERTIES
-    C_CLANG_TIDY "clang-tidy"
-)
+target_link_libraries(${TARGET_NAME} BOARD)
 
 
 add_custom_command(TARGET ${TARGET_NAME} POST_BUILD

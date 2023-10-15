@@ -1,12 +1,6 @@
-##Hardware
-
-# Exclude generated files
-BSP/*/generated/*
-# leave .clang-tidy and cmake files
-!BSP/*/generated/.clang-tidy
-!BSP/*/generated/CMakeLists.txt
-
-
+##Hardware Drivers
+drivers/*
+!drivers/CMakeLists.txt
 
 #Build
 build
