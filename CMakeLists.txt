@@ -13,6 +13,8 @@ project(
   LANGUAGES C ASM
   VERSION 0.1.0)
 
+set(CMAKE_C_CPPLINT "cpplint")
+
 set(COMPILE_OPTIONS
     -mcpu=cortex-m4
     -mthumb

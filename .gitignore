@@ -1,6 +1,8 @@
 ##Hardware Drivers
 drivers/*
 !drivers/CMakeLists.txt
+!drivers/Inc
+!drivers/Src
 
 #Build
 build
