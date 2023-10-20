@@ -6,6 +6,9 @@ set(CMAKE_TOOLCHAIN_FILE
 set(CMAKE_C_STANDARD 17)
 set(CMAKE_C_STANDARD_REQUIRED ON)
 set(CMAKE_C_EXTENSIONS ON)
+
+include(${CMAKE_SOURCE_DIR}/cmake/common.cmake)
+
 message("Build type: " ${CMAKE_BUILD_TYPE})
 
 project(
@@ -56,6 +59,8 @@ target_compile_definitions(${TARGET_NAME} PRIVATE ${COMPILE_DEFINITIONS})
 target_link_options(${TARGET_NAME} PRIVATE ${LINK_OPTIONS})
 
 target_link_libraries(${TARGET_NAME} BOARD)
+
+target_enable_lint(${TARGET_NAME})
 
 add_custom_command(
   TARGET ${TARGET_NAME}

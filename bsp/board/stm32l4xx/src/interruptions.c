@@ -2,4 +2,4 @@
 
 #include "stm32l4xx.h"
 
-void SysTickHandler() { HAL_IncTick(); }
+void SysTick_Handler() { HAL_IncTick(); }

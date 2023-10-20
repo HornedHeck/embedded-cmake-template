@@ -9,14 +9,9 @@ set(BOARD_INC ${CMAKE_CURRENT_LIST_DIR}/include)
 
 set(BOARD_PRIVATE_INC ${CMAKE_CURRENT_LIST_DIR}/${BOARD_FLAVOR}/include)
 
-set(STARTUP_SRC ${CMAKE_CURRENT_LIST_DIR}/startup_stm32l432xx.s)
-
 add_library(BOARD STATIC)
 
-target_sources(
-  BOARD
-  PUBLIC ${BOARD_SRC}
-  PRIVATE ${STARTUP_SRC})
+target_sources(BOARD PUBLIC ${BOARD_SRC})
 
 target_include_directories(BOARD PUBLIC ${BOARD_INC} ${BOARD_PRIVATE_INC})
 
@@ -26,4 +21,4 @@ target_compile_options(BOARD PRIVATE ${COMPILE_OPTIONS})
 target_compile_definitions(BOARD PRIVATE ${COMPILE_DEFINITIONS})
 target_link_options(BOARD PRIVATE ${LINK_OPTIONS})
 
-set_target_properties(BOARD PROPERTIES C_CLANG_TIDY "clang-tidy")
+target_enable_lint(BOARD)
