@@ -2,8 +2,6 @@ file(GLOB CORE_SRC ${CMAKE_CURRENT_LIST_DIR}/Src/*.c)
 
 set(CORE_INC ${CMAKE_CURRENT_LIST_DIR}/Inc)
 
-set(STARTUP_SRC ${CMAKE_CURRENT_LIST_DIR}/startup_stm32l432xx.s)
-
 set(LINKER_SCRIPT ${CMAKE_CURRENT_LIST_DIR}/STM32L432KCUx_FLASH.ld)
 
 set(HAL_SRC
@@ -32,8 +30,7 @@ set(CMSIS_INC ${CMAKE_CURRENT_LIST_DIR}/Drivers/CMSIS/Include
 
 add_library(HAL_CMSIS STATIC)
 
-target_sources(HAL_CMSIS PUBLIC ${CORE_SRC} ${HAL_SRC} ${STARTUP_SRC}
-                                ${LINKER_SCRIPT})
+target_sources(HAL_CMSIS PRIVATE ${CORE_SRC} ${HAL_SRC} ${LINKER_SCRIPT})
 
 target_include_directories(HAL_CMSIS SYSTEM PUBLIC ${CORE_INC} ${HAL_INC}
                                                    ${CMSIS_INC})

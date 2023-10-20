@@ -13,8 +13,6 @@ project(
   LANGUAGES C ASM
   VERSION 0.1.0)
 
-set(CMAKE_C_CPPLINT "cpplint")
-
 set(COMPILE_OPTIONS
     -mcpu=cortex-m4
     -mthumb
@@ -23,6 +21,7 @@ set(COMPILE_OPTIONS
     -fdata-sections
     -ffunction-sections
     -Wall
+    -Wno-unused-command-line-argument
     $<$<CONFIG:Debug>:-Og>)
 
 set(COMPILE_DEFINITIONS STM32L432xx USE_HAL_DRIVER)
