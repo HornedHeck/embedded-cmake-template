@@ -1,1 +1,0 @@
-target_link_libraries(BOARD HAL_CMSIS)

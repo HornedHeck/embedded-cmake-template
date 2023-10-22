@@ -1,0 +1,43 @@
+{
+    "version": 4,
+    "cmakeMinimumRequired": {
+        "major": 3,
+        "minor": 20,
+        "patch": 0
+    },
+    "configurePresets": [
+        {
+            "name": "stm32l4xx",
+            "displayName": "STM32 L4xx",
+            "description": "Build for STM32 L4xx with Ninja",
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/build/stm32l4xx",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug",
+                "BOARD_FLAVOR": {
+                    "type": "STRING",
+                    "value": "stm32l4xx"
+                }
+            }
+        },
+        {
+            "name": "linux_amd64",
+            "displayName": "Linux AMD64",
+            "description": "Build for Linux AMD64 with Ninja",
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/build/linux_amd64",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug",
+                "BOARD_FLAVOR": {
+                    "type": "STRING",
+                    "value": "linux_amd64"
+                }
+            }
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "Default"
+        }
+    ]
+}

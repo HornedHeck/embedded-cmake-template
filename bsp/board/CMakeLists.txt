@@ -15,7 +15,7 @@ target_sources(BOARD PUBLIC ${BOARD_SRC})
 
 target_include_directories(BOARD PUBLIC ${BOARD_INC} ${BOARD_PRIVATE_INC})
 
-add_subdirectory(${BOARD_FLAVOR})
+include(${BOARD_FLAVOR}/dependencies.cmake OPTIONAL)
 
 target_compile_options(BOARD PRIVATE ${COMPILE_OPTIONS})
 target_compile_definitions(BOARD PRIVATE ${COMPILE_DEFINITIONS})

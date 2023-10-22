@@ -1,13 +1,14 @@
 cmake_minimum_required(VERSION 3.20)
 
-set(CMAKE_TOOLCHAIN_FILE
-    ${CMAKE_SOURCE_DIR}/cmake/arm_none_eabi_toolchain.cmake)
-
 set(CMAKE_C_STANDARD 17)
 set(CMAKE_C_STANDARD_REQUIRED ON)
 set(CMAKE_C_EXTENSIONS ON)
 
 include(${CMAKE_SOURCE_DIR}/cmake/common.cmake)
+
+include(${CMAKE_SOURCE_DIR}/cmake/configs/${BOARD_FLAVOR}.cmake OPTIONAL)
+
+set(CMAKE_EXPORT_COMPILE_COMMANDS TRUE)
 
 message("Build type: " ${CMAKE_BUILD_TYPE})
 
@@ -15,32 +16,6 @@ project(
   "o-kawai-koto"
   LANGUAGES C ASM
   VERSION 0.1.0)
-
-set(COMPILE_OPTIONS
-    -mcpu=cortex-m4
-    -mthumb
-    -mfpu=fpv4-sp-d16
-    -mfloat-abi=hard
-    -fdata-sections
-    -ffunction-sections
-    -Wall
-    -Wno-unused-command-line-argument
-    $<$<CONFIG:Debug>:-Og>)
-
-set(COMPILE_DEFINITIONS STM32L432xx USE_HAL_DRIVER)
-
-set(LINK_OPTIONS
-    -T${CMAKE_SOURCE_DIR}/drivers/STM32L432KCUx_FLASH.ld
-    -mcpu=cortex-m4
-    -mthumb
-    -mfpu=fpv4-sp-d16
-    -mfloat-abi=hard
-    # -specs=nano.specs -lc -lm -lnosys
-    -Wl,-Map=${PROJECT_NAME}.map,--cref
-    # -Wl,--gc-sections
-)
-
-add_subdirectory(${CMAKE_SOURCE_DIR}/drivers)
 
 add_subdirectory(${CMAKE_SOURCE_DIR}/bsp)
 
