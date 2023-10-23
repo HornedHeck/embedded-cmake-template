@@ -2,4 +2,6 @@
 
 #include "stm32l4xx_iface.h"
 
-void InitBoard() { Init(); }
+void InitBoard() {
+    Init();
+}

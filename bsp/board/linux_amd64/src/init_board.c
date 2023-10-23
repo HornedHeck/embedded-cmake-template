@@ -2,4 +2,6 @@
 
 #include "stdio.h"
 
-void InitBoard() { printf("Initializing...\n"); }
+void InitBoard() {
+    printf("Initializing...\n");
+}

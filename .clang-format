@@ -12,3 +12,6 @@ AlignConsecutiveMacros: Consecutive
 
 # use \n instead of \r\n
 UseCRLF: false
+
+# No singli line functions exempt empty
+AllowShortFunctionsOnASingleLine: Empty
